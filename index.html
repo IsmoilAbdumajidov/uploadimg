@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="menu">
+        <div class="brand"><a href="https://t.me/ArtInWallpapers">Art In Wallpapers</a></div>
+        <ul>
+            <li><a href="#">Phone</a></li>
+            <li><a href="macbook.html">Computer</a></li>
+        </ul>
+    </nav>
+    <div class="btn_container">
+        <button id="btn" class="btn">Download</button>
+        <button class="btn get_file">
+            <input id="change" type="file" hidden>
+            Choose A Photo
+        </button>
+    </div>
+    <div class="container">
+        <div class="box">
+            <img class="img" src="img/iphone.png" alt="">
+        </div>
+    </div>
+
+
+
+    <script src="html2canvas.min.js"></script>
+    <script>
+        const btn = document.getElementById('btn')
+        const change = document.getElementById('change')
+        const container = document.querySelector('.container')
+        const box = document.querySelector('.box')
+        btn.addEventListener('click', () => {
+            console.log('salom');
+            html2canvas(container).then(canvas => {
+                const base = canvas.toDataURL('image/jpg')
+                let anchor = document.createElement('a')
+                anchor.setAttribute('href', base)
+                anchor.setAttribute('download', '@ArtInWallpapers.jpg')
+                anchor.click()
+                anchor.remove()
+            });
+        })
+        let get_file = document.querySelectorAll('.get_file')
+        get_file.forEach(item => {
+            item.addEventListener('click', function () {
+                const inp = item.children[0]
+                inp.click()
+            });
+        })
+        change.onchange = () =>{
+            let reader = new FileReader
+            reader.readAsDataURL(change.files[0])
+            reader.onload = () =>{
+                showBg(box,reader.result)
+                showBg(container,reader.result)
+            }
+        }
+        function showBg(elem,res){
+            elem.style.background = `url("${res}") no-repeat center`
+            elem.style.backgroundSize = 'cover'
+        }
+    </script>
+</body>
+
+</html>
