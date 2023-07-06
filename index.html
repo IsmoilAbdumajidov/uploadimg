@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="menu">
+    <nav class="menu padding">
         <div class="brand"><a href="https://t.me/ArtInWallpapers">Art In Wallpapers</a></div>
         <ul>
             <li><a href="#">Phone</a></li>
@@ -25,8 +25,28 @@
         </button>
     </div>
     <div class="container">
-        <div class="box">
-            <img class="img" src="img/iphone.png" alt="">
+        <h1 class="title padding">High Quality wallpapers</h1>
+        <div class="bg_container">
+            <div class="box">
+                <div class="bg_iphone"></div>
+                <img class="img" src="img/iphone.png" alt="">
+            </div>
+        </div>
+        <div class="text padding">
+            <div class="left">
+                <div class="k8">8K</div>
+                <div>
+                    <h1>Quality</h1>
+                    <h2>Wallpapers</h2>
+                </div>
+            </div>
+            <div class="right">
+                <h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" ><path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"></path></svg>
+                    <span>@ArtInWallpapers</span>
+                </h1>
+                <p>The best telegram wallpapers channel</p>
+            </div>
         </div>
     </div>
 
@@ -37,7 +57,8 @@
         const btn = document.getElementById('btn')
         const change = document.getElementById('change')
         const container = document.querySelector('.container')
-        const box = document.querySelector('.box')
+        const bg_container = document.querySelector('.bg_container')
+        const box = document.querySelector('.bg_iphone')
         btn.addEventListener('click', () => {
             console.log('salom');
             html2canvas(container).then(canvas => {
@@ -56,15 +77,15 @@
                 inp.click()
             });
         })
-        change.onchange = () =>{
+        change.onchange = () => {
             let reader = new FileReader
             reader.readAsDataURL(change.files[0])
-            reader.onload = () =>{
-                showBg(box,reader.result)
-                showBg(container,reader.result)
+            reader.onload = () => {
+                showBg(box, reader.result)
+                showBg(bg_container, reader.result)
             }
         }
-        function showBg(elem,res){
+        function showBg(elem, res) {
             elem.style.background = `url("${res}") no-repeat center`
             elem.style.backgroundSize = 'cover'
         }
