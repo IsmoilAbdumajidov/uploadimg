@@ -33,8 +33,10 @@
     background-size: cover;
     display: flex;
     justify-content: center;
+    gap: 200px;
     align-items: start;
     padding-top: 50px ;
+    /* border: 3px solid red; */
 }
 
 .menu {
@@ -78,7 +80,8 @@ a {
     height: auto;
     position: relative;
     z-index: 10;
-    margin: auto;
+    /* margin: auto; */
+    /* border: 3px solid red; */
     top: 50%;
     transform: translateY(-50%);
 
@@ -88,6 +91,10 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: absolute;
     width: 98%;
     height: 98%;
@@ -142,6 +149,7 @@ a {
     top: 8px;
     left: 50%;
     transform: translateX(-50%);
+    border-radius: 30px;
 }
 
 .booc {
@@ -198,6 +206,39 @@ a {
 .right p{
     text-transform: uppercase;
     font-weight: 600;
+}
+.icon_bottom{
+    margin-top: auto;
+    margin-bottom: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    fill: #fff;
+
+}
+.icon_bottom div{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(217, 217, 217, 0.4);
+}
+.text_lock{
+    text-align: center;
+    color: #fff;
+    margin-top: 100px;
+}
+.text_lock h1{
+    font-size: 60px;
+}
+.bg_bottom{
+    width: 130px;
+    height:5px;
+    background: #fff;
+    margin-bottom: 15px;
 }
 
 

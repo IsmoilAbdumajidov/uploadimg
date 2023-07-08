@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="menu padding">
+        <div class="brand"><a href="https://t.me/ArtInWallpapers">Art In Wallpapers</a></div>
+        <ul>
+            <li><a href="index.html">Phone</a></li>
+            <li><a href="macbook.html">Computer</a></li>
+        </ul>
+    </nav>
+    <div class="btn_container">
+        <button id="btn" class="btn">Download</button>
+        <button class="btn get_file">
+            <input id="change" type="file" hidden>
+            Choose A Photo
+        </button>
+    </div>
+    <div class="container">
+        <h1 class="title padding">High Quality wallpapers</h1>
+        <div class="bg_container">
+            <div class="box">
+                <div class="bg_iphone">
+                </div>
+                <img class="img" src="img/iphone.png" alt="">
+            </div>
+            <div class="box">
+                <div class="bg_iphone bg_iphone2">
+                    <div class="text_lock">
+                        <p>Thurday, 22 September</p>
+                        <h1>10:00</h1>
+                    </div>
+                    <div class="icon_bottom">
+                        <div class="torch">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 11.648V20a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8.352c1.067-.552 3-1.928 3-4.648V5H5v2c0 2.72 1.933 4.096 3 4.648zM11 11h2v3h-2v-3zM5 2h14v2H5z"></path></svg>
+                        </div>
+                        <div class="camera">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 9c-1.626 0-3 1.374-3 3s1.374 3 3 3 3-1.374 3-3-1.374-3-3-3z"></path><path d="M20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.996.996 0 0 0-.707.293L6.586 5H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-8 12c-2.71 0-5-2.29-5-5s2.29-5 5-5 5 2.29 5 5-2.29 5-5 5z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="bg_bottom"></div>
+
+                </div>
+                <img class="img" src="img/iphone.png" alt="">
+            </div>
+        </div>
+        <div class="text padding">
+            <div class="left">
+                <div class="k8">8K</div>
+                <div>
+                    <h1>Quality</h1>
+                    <h2>Wallpapers</h2>
+                </div>
+            </div>
+            <div class="right">
+                <h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                        <path
+                            d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z">
+                        </path>
+                    </svg>
+                    <span>@ArtInWallpapers</span>
+                </h1>
+                <p>The best telegram wallpapers channel</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="html2canvas.min.js"></script>
+    <script>
+        const btn = document.getElementById('btn')
+        const change = document.getElementById('change')
+        const container = document.querySelector('.container')
+        const bg_container = document.querySelector('.bg_container')
+        const box = document.querySelector('.bg_iphone')
+        const box2 = document.querySelector('.bg_iphone2')
+        btn.addEventListener('click', () => {
+            console.log('salom');
+            html2canvas(container).then(canvas => {
+                const base = canvas.toDataURL('image/jpg')
+                let anchor = document.createElement('a')
+                anchor.setAttribute('href', base)
+                anchor.setAttribute('download', '@ArtInWallpapers.jpg')
+                anchor.click()
+                anchor.remove()
+            });
+        })
+        let get_file = document.querySelectorAll('.get_file')
+        get_file.forEach(item => {
+            item.addEventListener('click', function () {
+                const inp = item.children[0]
+                inp.click()
+            });
+        })
+        change.onchange = () => {
+            let reader = new FileReader
+            reader.readAsDataURL(change.files[0])
+            reader.onload = () => {
+                showBg(box, reader.result)
+                showBg(box2, reader.result)
+                showBg(bg_container, reader.result)
+            }
+        }
+        function showBg(elem, res) {
+            elem.style.background = `url("${res}") no-repeat center`
+            elem.style.backgroundSize = 'cover'
+        }
+    </script>
+</body>
+
+</html>
